@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/source/",
+                "${workspaceFolder}/vendor/",
+                "${workspaceFolder}/vendor/glad/include/",
+                "${workspaceFolder}/vendor/glfw/include/",
+                "${workspaceFolder}/vendor/imgui/",
+                "${VULKAN_SDK}/include/"
+            ],
+            "defines": [
+                "VK_USE_PLATFORM_WIN32_KHR"
+            ],
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30037/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "msvc-x64"
+        }
+    ],
+    "version": 4
+}

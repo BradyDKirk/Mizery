@@ -1,0 +1,7 @@
+build_files
+run_tree\data\shaders
+
+*.exe
+*.pdb
+*.ini
+*.spv
