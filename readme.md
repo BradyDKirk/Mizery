@@ -1,6 +1,6 @@
 # Mizery
 
-P.T. style horror game with custom built engine
+Game engine for creating P.T. style horror games
 
 ## Building the Project
 
@@ -26,3 +26,13 @@ Valid arguments are listed below:
 - `-fullscreen`: Launch in fullscreen mode
 - `-vsync`: Enable vsync
 - `-hideEditor`: Hide editor on startup
+
+## Libraries Used
+- [glad](https://github.com/Dav1dde/glad)
+- [GLFW](https://github.com/glfw/glfw) (3.3.4)
+- [GLM](https://github.com/g-truc/glm) (0.9.9.8)
+- [Dear ImGui](https://github.com/ocornut/imgui) (1.83)
+- [spdlog](https://github.com/gabime/spdlog) (1.8.5)
+- [stb header libraries](https://github.com/nothings/stb) (stb_image.h)
+- [tinyobjloader](https://github.com/tinyobjloader/tinyobjloader)
+- [volk](https://github.com/zeux/volk) (v1.2.175)
