@@ -70,7 +70,7 @@ set LIB_SRC_FILES=%VENDOR_DIR%glfw.c %VENDOR_DIR%vendor_unity.cpp
 set LIBS=kernel32.lib user32.lib shell32.lib winmm.lib gdi32.lib
 
 REM Compile and link flags
-set COMMON_COMPILE_FLAGS=/nologo /std:c++20 /EHa /Fo%INT_DIR% /DVK_USE_PLATFORM_WIN32_KHR
+set COMMON_COMPILE_FLAGS=/nologo /std:c++17 /EHa /Fo%INT_DIR% /DVK_USE_PLATFORM_WIN32_KHR
 set COMMON_LINK_FLAGS=/nologo /INCREMENTAL:NO
 
 IF DEFINED DEBUG (
