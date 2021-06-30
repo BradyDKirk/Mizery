@@ -5,18 +5,18 @@ namespace Mizery {
     void Particle::integrate(real32 dt)
     {
         // Calculate new position
-            position += velocity * dt;
-            
-            // Calculate new velocity
-            glm::vec3 newAcc = acceleration;
-            newAcc += inverseMass * forceAccum;
-            velocity += newAcc * dt;
-            
-            // Account for damping
-            velocity *= powf(damping, dt);
-            
-            // Clear forces
-            clearAccumulator();
+        position += velocity * dt;
+        
+        // Calculate new velocity
+        glm::vec3 newAcc = acceleration;
+        newAcc += inverseMass * forceAccum;
+        velocity += newAcc * dt;
+        
+        // Account for damping
+        velocity *= powf(damping, dt);
+        
+        // Clear forces
+        clearAccumulator();
     }
     
     void Particle::addForce(glm::vec3 force)
