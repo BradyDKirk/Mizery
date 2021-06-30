@@ -1,7 +1,7 @@
 build_files
 
-run_tree\data
-run_tree\data\shaders\**
+run_tree/data
+run_tree/data/shaders/
 
 *.exe
 *.pdb
