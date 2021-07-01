@@ -8,7 +8,7 @@ IF "%1"=="-d" set EXE=mizery_debug.exe
 
 pushd %~dp0run_tree
 IF EXIST %EXE% (
-    start %EXE% -hideEditor
+    start %EXE% -hideEditor -fullscreen
 ) ELSE (
     echo %EXE% not found
 )

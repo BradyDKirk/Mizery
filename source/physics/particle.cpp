@@ -1,3 +1,6 @@
+/***********************************************************
+ * From "Game Physics Engine Development" by Ian Millington
+ ***********************************************************/
 #include "particle.h"
 
 namespace Mizery {

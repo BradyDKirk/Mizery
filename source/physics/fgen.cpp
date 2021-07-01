@@ -1,3 +1,7 @@
+/***********************************************************
+ * From "Game Physics Engine Development" by Ian Millington
+ ***********************************************************/
+
 #include "fgen.h"
 
 namespace Mizery {
