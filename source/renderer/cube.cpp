@@ -2,14 +2,14 @@
 
 namespace Mizery {
     
-	ParticleForceRegistry registry;
-	ParticleAnchoredBungee* pb;
-	ParticleGravity* pg;
-	ParticleContactResolver* pcr;
-	ParticleContact* pc;
+	ForceRegistry registry;
+	Spring* fgSpring;
+	Gravity* fgGravity;
+	RigidBody otherBody;
 	
     Cube::Cube(Shader* shader, glm::vec3 position, glm::vec3 scale, glm::vec3 color, bool32 isStatic) : shader(shader), position(position), scale(scale), color(color)
     {
+		orientation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f);
         // @TODO: Put this into a CubeModel or something so we aren't duplicating vertex data in memory
 		
         real32 vertices[] = {
@@ -75,30 +75,37 @@ namespace Mizery {
 		// @TEMP
 		if (!isStatic)
 		{
-			particle.position = position;
-			particle.velocity = glm::vec3(0.0f, 0.0f, 0.0f);
-			particle.acceleration = glm::vec3(0.0f, 0.0f, 0.0f);
-			particle.setMass(2.0f);
-			particle.damping = 0.99f;
+			orientation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f);
+			body.position = position;
+			body.orientation = orientation;
+			body.velocity = glm::vec3(0.0f, 0.0f, 5.0f);
+			body.rotation = glm::vec3(0.0f, 0.0f, 0.0f);
+			body.acceleration = glm::vec3(0.0f, 0.0f, 0.0f);
+			body.setMass(2.0f);
+			body.linearDamping = 0.99f;
+			body.angularDamping = 0.99f;
+			
+			// @TODO: Set inertia tensor properly (and learn more about it)
+			body.setInertiaTensor(glm::mat3(1.0f));
+			
+			body.calculateDerivedData();
 
-			pcr = new ParticleContactResolver(2);
-			pc = new ParticleContact();
-			pc->contactNormal = glm::vec3(0.0f, 1.0f, 0.0f);
-			//pc->penetration = 0.0f;
-			pc->restitution = 0.8f;
-			pc->particle[0] = &particle;
-			pc->particle[1] = NULL;
+			otherBody.position = glm::vec3(0.0f);
+			otherBody.velocity = glm::vec3(0.0f);
+			otherBody.acceleration = glm::vec3(0.0f);
+			otherBody.orientation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f);
+			otherBody.rotation = glm::vec3(0.0f);
+			otherBody.calculateDerivedData();
 
 			// Add gravity
-			pg = new ParticleGravity(glm::vec3(0.0f, -10.0f, 0.0f));
+			fgGravity = new Gravity(glm::vec3(0.0f, -10.0f, 0.0f));
 		
 			// Add spring
-			glm::vec3* anchor = new glm::vec3(0.0f, 0.0f, 0.0f);
-			pb = new ParticleAnchoredBungee(anchor, 10.0f, 4.0f);
+			fgSpring = new Spring(glm::vec3(0.5f, 0.0f, 0.0f), &otherBody, glm::vec3(0.0f), 10.0f, 2.0f);
 
 			// Register force generators
-			registry.add(&particle, pg);
-			registry.add(&particle, pb);
+			registry.add(&body, fgGravity);
+			registry.add(&body, fgSpring);
 		}
     }
     
@@ -107,22 +114,19 @@ namespace Mizery {
 		// @TEMP
 		if (!isStatic)
 		{
-			particle.clearAccumulator();
+			body.clearAccumulators();
 			
 			registry.updateForces(dt);
 			
-			particle.integrate(dt);
+			body.integrate(dt);
 
-			if (particle.position.y < -6.0f)
-			{
-				pcr->resolveContacts({ pc }, 0, dt);
-			}
-			position = particle.position;
+			position = body.position;
+			orientation = body.orientation;
 		}
 		
 		model = glm::mat4(1.0f);
         model = glm::translate(model, position);
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = model * glm::mat4_cast(orientation);
         model = glm::scale(model, scale);
     }
     

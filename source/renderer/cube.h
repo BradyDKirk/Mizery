@@ -3,9 +3,7 @@
 #include <glad/glad.h>
 
 #include "core/math.h"
-#include "physics/particle.h"
-#include "physics/pfgen.h"
-#include "physics/pcontacts.h"
+#include "physics/fgen.h"
 #include "renderer/shader.h"
 
 // @FIX: Honestly this whole class is a mess. Just completely redo with the full implementation of the renderer and physics engine
@@ -24,10 +22,11 @@ namespace Mizery {
         Shader* shader;
         glm::vec3 color;
         glm::vec3 position;
+        glm::quat orientation;
         glm::vec3 scale;
         glm::mat4 model;
         uint32 cubeVAO;
-        Particle particle;
+        RigidBody body;
     };
     
 }

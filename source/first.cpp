@@ -7,6 +7,8 @@
 
 #include "editor/editor.cpp"
 
+#include "physics/body.cpp"
+#include "physics/fgen.cpp"
 #include "physics/particle.cpp"
 #include "physics/pcontacts.cpp"
 #include "physics/pfgen.cpp"
