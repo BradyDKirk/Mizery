@@ -81,27 +81,22 @@ namespace Mizery {
 			body.velocity = glm::vec3(0.0f, 0.0f, 5.0f);
 			body.rotation = glm::vec3(0.0f, 0.0f, 0.0f);
 			body.acceleration = glm::vec3(0.0f, 0.0f, 0.0f);
-			body.setMass(2.0f);
+			body.setMass(20.0f);
 			body.linearDamping = 0.99f;
 			body.angularDamping = 0.99f;
-			
-			// @TODO: Set inertia tensor properly (and learn more about it)
 			body.setInertiaTensor(glm::mat3(1.0f));
-			
-			body.calculateDerivedData();
 
 			otherBody.position = glm::vec3(0.0f);
 			otherBody.velocity = glm::vec3(0.0f);
 			otherBody.acceleration = glm::vec3(0.0f);
 			otherBody.orientation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f);
 			otherBody.rotation = glm::vec3(0.0f);
-			otherBody.calculateDerivedData();
 
 			// Add gravity
 			fgGravity = new Gravity(glm::vec3(0.0f, -10.0f, 0.0f));
 		
 			// Add spring
-			fgSpring = new Spring(glm::vec3(0.5f, 0.0f, 0.0f), &otherBody, glm::vec3(0.0f), 10.0f, 2.0f);
+			fgSpring = new Spring(glm::vec3(0.5f, 0.0f, 0.0f), &otherBody, glm::vec3(0.0f), 100.0f, 2.0f);
 
 			// Register force generators
 			registry.add(&body, fgGravity);
@@ -115,6 +110,10 @@ namespace Mizery {
 		if (!isStatic)
 		{
 			body.clearAccumulators();
+			otherBody.clearAccumulators();
+			
+			body.calculateDerivedData();
+			otherBody.calculateDerivedData();
 			
 			registry.updateForces(dt);
 			

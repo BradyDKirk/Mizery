@@ -14,6 +14,7 @@
 #include "physics/pfgen.cpp"
 #include "physics/plinks.cpp"
 #include "physics/pworld.cpp"
+#include "physics/world.h"
 
 #include "renderer/camera.cpp"
 #include "renderer/cube.cpp"
