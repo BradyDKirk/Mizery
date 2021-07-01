@@ -2,12 +2,12 @@
 
 #include <glad/glad.h>
 
+#include "core/log.h"
 #include "core/math.h"
 #include "core/window.h"
 #include "renderer/camera.h"
 #include "renderer/cube.h"
 #include "renderer/shader.h"
-#include "utility/log.h"
 
 namespace Mizery {
     

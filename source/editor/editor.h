@@ -5,9 +5,9 @@
 #include <imgui_impl_opengl3.h>
 
 #include "core/typedefs.h"
+#include "core/log.h"
 #include "core/input.h"
 #include "core/window.h"
-#include "utility/log.h"
 
 namespace Mizery {
 

@@ -1,10 +1,10 @@
 #pragma once
 
+#include "core/log.h"
 #include "core/typedefs.h"
 #include "core/window.h"
 #include "editor/editor.h"
 #include "renderer/renderer.h"
-#include "utility/log.h"
 
 #include "game.h"
 

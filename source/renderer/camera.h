@@ -1,8 +1,8 @@
 #pragma once
 
+#include "core/log.h"
 #include "core/math.h"
 #include "core/window.h"
-#include "utility/log.h"
 
 namespace Mizery {
     

@@ -3,6 +3,7 @@
 
 #include "core/engine.cpp"
 #include "core/input.cpp"
+#include "core/log.cpp"
 #include "core/window.cpp"
 
 #include "editor/editor.cpp"
@@ -21,7 +22,6 @@
 #include "renderer/renderer.cpp"
 #include "renderer/shader.cpp"
 
-#include "utility/log.cpp"
 
 #include "game.cpp"
 

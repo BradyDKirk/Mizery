@@ -5,7 +5,7 @@
 
 #include "core/typedefs.h"
 #include "core/input.h"
-#include "utility/log.h"
+#include "core/log.h"
 
 namespace Mizery {
 

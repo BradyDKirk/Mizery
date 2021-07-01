@@ -5,9 +5,9 @@
 #include <fstream>
 #include <vector>
 
+#include "core/log.h"
 #include "core/math.h"
 #include "core/typedefs.h"
-#include "utility/log.h"
 
 namespace Mizery {
     

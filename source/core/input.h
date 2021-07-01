@@ -5,8 +5,8 @@
 #include "core/key_codes.h"
 #include "core/mouse_codes.h"
 #include "core/typedefs.h"
+#include "core/log.h"
 
-#include "utility/log.h"
 
 namespace Mizery {
     
