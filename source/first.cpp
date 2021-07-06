@@ -22,7 +22,6 @@
 #include "renderer/renderer.cpp"
 #include "renderer/shader.cpp"
 
-
 #include "game.cpp"
 
 using namespace Mizery;

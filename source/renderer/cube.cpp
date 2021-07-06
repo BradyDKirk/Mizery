@@ -84,7 +84,7 @@ namespace Mizery {
 			body.setMass(20.0f);
 			body.linearDamping = 0.99f;
 			body.angularDamping = 0.99f;
-			body.setInertiaTensor(glm::mat3(1.0f));
+			body.setInertiaTensor((body.getMass() / 6.0f) * glm::mat3(1.0f));
 
 			otherBody.position = glm::vec3(0.0f);
 			otherBody.velocity = glm::vec3(0.0f);

@@ -114,6 +114,7 @@ namespace Mizery {
     
     static inline void _calculateTransformMatrix(glm::mat4& transformMatrix, const glm::vec3& position, const glm::quat& orientation)
     {
+        // Create transform matrix from position and orientation
         transformMatrix = glm::mat4(1.0f);
         transformMatrix = glm::translate(transformMatrix, position);
         transformMatrix = transformMatrix * glm::mat4_cast(orientation);
@@ -121,28 +122,9 @@ namespace Mizery {
     
     static inline void _transformInertiaTensor(glm::mat3& iitWorld, const glm::quat& q, const glm::mat3& iitBody, glm::mat4& rotmat)
     {
-        // @TODO: Verify this is correct
-        real32 t4  = (rotmat[0][0] * iitBody[0][0]) + (rotmat[1][0] * iitBody[0][1]) + (rotmat[2][0] * iitBody[0][2]);
-        real32 t9  = (rotmat[0][0] * iitBody[1][0]) + (rotmat[1][0] * iitBody[1][1]) + (rotmat[2][0] * iitBody[1][2]);
-        real32 t14 = (rotmat[0][0] * iitBody[2][0]) + (rotmat[1][0] * iitBody[2][1]) + (rotmat[2][0] * iitBody[2][2]);
-        real32 t28 = (rotmat[0][1] * iitBody[0][0]) + (rotmat[1][1] * iitBody[0][1]) + (rotmat[2][1] * iitBody[0][2]);
-        real32 t33 = (rotmat[0][1] * iitBody[1][0]) + (rotmat[1][1] * iitBody[1][1]) + (rotmat[2][1] * iitBody[1][2]);
-        real32 t38 = (rotmat[0][1] * iitBody[2][0]) + (rotmat[1][1] * iitBody[2][1]) + (rotmat[2][1] * iitBody[2][2]);
-        real32 t52 = (rotmat[0][2] * iitBody[0][0]) + (rotmat[1][2] * iitBody[0][1]) + (rotmat[2][2] * iitBody[0][2]);
-        real32 t57 = (rotmat[0][2] * iitBody[1][0]) + (rotmat[1][2] * iitBody[1][1]) + (rotmat[2][2] * iitBody[1][2]);
-        real32 t62 = (rotmat[0][2] * iitBody[2][0]) + (rotmat[1][2] * iitBody[2][1]) + (rotmat[2][2] * iitBody[2][2]);
-        
-        iitWorld[0][0] = (t4 *  rotmat[0][0]) + (t9 *  rotmat[1][0]) + (t14 *  rotmat[2][0]);
-        iitWorld[1][0] = (t4 *  rotmat[0][1]) + (t9 *  rotmat[1][1]) + (t14 *  rotmat[2][1]);
-        iitWorld[2][0] = (t4 *  rotmat[0][2]) + (t9 *  rotmat[1][2]) + (t14 *  rotmat[2][2]);
-        
-        iitWorld[0][1] = (t28 * rotmat[0][0]) + (t33 * rotmat[1][0]) + (t38 * rotmat[2][0]);
-        iitWorld[1][1] = (t28 * rotmat[0][1]) + (t33 * rotmat[1][1]) + (t38 * rotmat[2][1]);
-        iitWorld[2][1] = (t28 * rotmat[0][2]) + (t33 * rotmat[1][2]) + (t38 * rotmat[2][2]);
-        
-        iitWorld[0][2] = (t52 * rotmat[0][0]) + (t57 * rotmat[1][0]) + (t62 * rotmat[2][0]);
-        iitWorld[1][2] = (t52 * rotmat[0][1]) + (t57 * rotmat[1][1]) + (t62 * rotmat[2][1]);
-        iitWorld[2][2] = (t52 * rotmat[0][2]) + (t57 * rotmat[1][2]) + (t62 * rotmat[2][2]);
+        // Change of basis transformation
+        glm::mat3 rotmat_mat3 = glm::mat3(rotmat);
+        iitWorld = rotmat_mat3 * iitBody * glm::inverse(rotmat_mat3);
     }
     
 }
