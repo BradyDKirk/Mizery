@@ -1,6 +1,21 @@
 # Mizery
 
-Game engine for creating P.T. style horror games
+Game engine from scratch
+
+## Features and Goals
+
+### Current Features
+- Basic core engine features such as window creation, input handling, and logging
+- Editor overlay implemented with ImGui (Currently just a demo window)
+- Basic OpenGL renderer with shader hotswapping
+- Basic rigid body physics engine (Custom implementation to come later)
+
+### Planned Features
+- Windows platform layer from scratch (instead of using GLFW)
+- Vulkan Forward+ renderer
+- Custom rigid body physics engine with collision detection
+- 3D audio
+- Editor overlay to interface with scenes; edit object properties, place game events, scene loading/saving, etc.
 
 ## Building the Project
 
