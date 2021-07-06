@@ -2,7 +2,6 @@
 
 #include "core/input.h"
 #include "core/log.h"
-#include "physics/world.h"
 #include "renderer/renderer.h"
 
 namespace Mizery {
@@ -25,7 +24,6 @@ namespace Mizery {
         
     private:
         Camera* camera;
-        World world;
     };
     
 }

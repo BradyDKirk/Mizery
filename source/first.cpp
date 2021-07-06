@@ -9,6 +9,7 @@
 #include "editor/editor.cpp"
 
 #include "physics/body.cpp"
+#include "physics/collide_coarse.cpp"
 #include "physics/fgen.cpp"
 #include "physics/particle.cpp"
 #include "physics/pcontacts.cpp"

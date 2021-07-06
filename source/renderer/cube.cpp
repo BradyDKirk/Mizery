@@ -1,13 +1,8 @@
 #include "cube.h"
 
 namespace Mizery {
-    
-	ForceRegistry registry;
-	Spring* fgSpring;
-	Gravity* fgGravity;
-	RigidBody otherBody;
 	
-    Cube::Cube(Shader* shader, glm::vec3 position, glm::vec3 scale, glm::vec3 color, bool32 isStatic) : shader(shader), position(position), scale(scale), color(color)
+    Cube::Cube(Shader* shader, glm::vec3 position, glm::vec3 scale, glm::vec3 color) : shader(shader), position(position), scale(scale), color(color)
     {
 		orientation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f);
         // @TODO: Put this into a CubeModel or something so we aren't duplicating vertex data in memory
@@ -71,58 +66,10 @@ namespace Mizery {
 		
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(real32), (void*)(3 * sizeof(real32)));
 		glEnableVertexAttribArray(1);
-		
-		// @TEMP
-		if (!isStatic)
-		{
-			orientation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f);
-			body.position = position;
-			body.orientation = orientation;
-			body.velocity = glm::vec3(0.0f, 0.0f, 5.0f);
-			body.rotation = glm::vec3(0.0f, 0.0f, 0.0f);
-			body.acceleration = glm::vec3(0.0f, 0.0f, 0.0f);
-			body.setMass(20.0f);
-			body.linearDamping = 0.99f;
-			body.angularDamping = 0.99f;
-			body.setInertiaTensor((body.getMass() / 6.0f) * glm::mat3(1.0f));
-
-			otherBody.position = glm::vec3(0.0f);
-			otherBody.velocity = glm::vec3(0.0f);
-			otherBody.acceleration = glm::vec3(0.0f);
-			otherBody.orientation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f);
-			otherBody.rotation = glm::vec3(0.0f);
-
-			// Add gravity
-			fgGravity = new Gravity(glm::vec3(0.0f, -10.0f, 0.0f));
-		
-			// Add spring
-			fgSpring = new Spring(glm::vec3(0.5f, 0.0f, 0.0f), &otherBody, glm::vec3(0.0f), 100.0f, 2.0f);
-
-			// Register force generators
-			registry.add(&body, fgGravity);
-			registry.add(&body, fgSpring);
-		}
     }
     
-    void Cube::update(bool32 isStatic, real32 dt)
-    {
-		// @TEMP
-		if (!isStatic)
-		{
-			body.clearAccumulators();
-			otherBody.clearAccumulators();
-			
-			body.calculateDerivedData();
-			otherBody.calculateDerivedData();
-			
-			registry.updateForces(dt);
-			
-			body.integrate(dt);
-
-			position = body.position;
-			orientation = body.orientation;
-		}
-		
+    void Cube::update(real32 dt)
+    {		
 		model = glm::mat4(1.0f);
         model = glm::translate(model, position);
 		model = model * glm::mat4_cast(orientation);

@@ -10,3 +10,5 @@
 #include <glm/gtc/quaternion.hpp>
 
 #include "core/typedefs.h"
+
+#define PI 3.14159f
