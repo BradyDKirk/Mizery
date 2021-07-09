@@ -10,12 +10,7 @@ Game engine from scratch
 - Basic OpenGL renderer with shader hotswapping
 - Basic rigid body physics engine (Custom implementation to come later)
 
-### Planned Features
-- Windows platform layer from scratch (instead of using GLFW)
-- Vulkan Forward+ renderer
-- Custom rigid body physics engine with collision detection
-- 3D audio
-- Editor overlay to interface with scenes; edit object properties, place game events, scene loading/saving, etc.
+For planned features/todo list, look at [todo.md](todo.md)
 
 ## Building the Project
 
