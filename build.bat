@@ -59,6 +59,7 @@ IF DEFINED DEBUG (
     set INT_DIR=%BUILD_DIR%release\
 )
 IF NOT EXIST %INT_DIR% mkdir %INT_DIR%
+IF NOT EXIST %WORKING_DIR% mkdir %WORKING_DIR%
 
 REM Include and library directories
 set INCLUDE_DIRS=/I%SOURCE_DIR% /I%VENDOR_DIR% /I%VENDOR_DIR%glad\include\ /I%VENDOR_DIR%glfw\include\ /I%VENDOR_DIR%imgui\ /I%VULKAN_SDK%\include\

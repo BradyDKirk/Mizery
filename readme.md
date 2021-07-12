@@ -45,4 +45,4 @@ Valid arguments are listed below:
 - [spdlog](https://github.com/gabime/spdlog) (1.8.5)
 - [stb header libraries](https://github.com/nothings/stb) (stb_image.h)
 - [tinyobjloader](https://github.com/tinyobjloader/tinyobjloader)
-- [volk](https://github.com/zeux/volk) (v1.2.175)
+- [volk](https://github.com/zeux/volk) (v1.2.182)

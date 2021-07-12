@@ -15,7 +15,7 @@
 #endif
 
 /* VOLK_GENERATE_VERSION_DEFINE */
-#define VOLK_HEADER_VERSION 175
+#define VOLK_HEADER_VERSION 182
 /* VOLK_GENERATE_VERSION_DEFINE */
 
 #ifndef VK_NO_PROTOTYPES
@@ -342,6 +342,13 @@ struct VolkDeviceTable
 	PFN_vkCmdSetStencilTestEnableEXT vkCmdSetStencilTestEnableEXT;
 	PFN_vkCmdSetViewportWithCountEXT vkCmdSetViewportWithCountEXT;
 #endif /* defined(VK_EXT_extended_dynamic_state) */
+#if defined(VK_EXT_extended_dynamic_state2)
+	PFN_vkCmdSetDepthBiasEnableEXT vkCmdSetDepthBiasEnableEXT;
+	PFN_vkCmdSetLogicOpEXT vkCmdSetLogicOpEXT;
+	PFN_vkCmdSetPatchControlPointsEXT vkCmdSetPatchControlPointsEXT;
+	PFN_vkCmdSetPrimitiveRestartEnableEXT vkCmdSetPrimitiveRestartEnableEXT;
+	PFN_vkCmdSetRasterizerDiscardEnableEXT vkCmdSetRasterizerDiscardEnableEXT;
+#endif /* defined(VK_EXT_extended_dynamic_state2) */
 #if defined(VK_EXT_external_memory_host)
 	PFN_vkGetMemoryHostPointerPropertiesEXT vkGetMemoryHostPointerPropertiesEXT;
 #endif /* defined(VK_EXT_external_memory_host) */
@@ -361,6 +368,10 @@ struct VolkDeviceTable
 #if defined(VK_EXT_line_rasterization)
 	PFN_vkCmdSetLineStippleEXT vkCmdSetLineStippleEXT;
 #endif /* defined(VK_EXT_line_rasterization) */
+#if defined(VK_EXT_multi_draw)
+	PFN_vkCmdDrawMultiEXT vkCmdDrawMultiEXT;
+	PFN_vkCmdDrawMultiIndexedEXT vkCmdDrawMultiIndexedEXT;
+#endif /* defined(VK_EXT_multi_draw) */
 #if defined(VK_EXT_private_data)
 	PFN_vkCreatePrivateDataSlotEXT vkCreatePrivateDataSlotEXT;
 	PFN_vkDestroyPrivateDataSlotEXT vkDestroyPrivateDataSlotEXT;
@@ -399,6 +410,10 @@ struct VolkDeviceTable
 	PFN_vkGetPastPresentationTimingGOOGLE vkGetPastPresentationTimingGOOGLE;
 	PFN_vkGetRefreshCycleDurationGOOGLE vkGetRefreshCycleDurationGOOGLE;
 #endif /* defined(VK_GOOGLE_display_timing) */
+#if defined(VK_HUAWEI_subpass_shading)
+	PFN_vkCmdSubpassShadingHUAWEI vkCmdSubpassShadingHUAWEI;
+	PFN_vkGetSubpassShadingMaxWorkgroupSizeHUAWEI vkGetSubpassShadingMaxWorkgroupSizeHUAWEI;
+#endif /* defined(VK_HUAWEI_subpass_shading) */
 #if defined(VK_INTEL_performance_query)
 	PFN_vkAcquirePerformanceConfigurationINTEL vkAcquirePerformanceConfigurationINTEL;
 	PFN_vkCmdSetPerformanceMarkerINTEL vkCmdSetPerformanceMarkerINTEL;
@@ -585,6 +600,13 @@ struct VolkDeviceTable
 	PFN_vkGetVideoSessionMemoryRequirementsKHR vkGetVideoSessionMemoryRequirementsKHR;
 	PFN_vkUpdateVideoSessionParametersKHR vkUpdateVideoSessionParametersKHR;
 #endif /* defined(VK_KHR_video_queue) */
+#if defined(VK_NVX_binary_import)
+	PFN_vkCmdCuLaunchKernelNVX vkCmdCuLaunchKernelNVX;
+	PFN_vkCreateCuFunctionNVX vkCreateCuFunctionNVX;
+	PFN_vkCreateCuModuleNVX vkCreateCuModuleNVX;
+	PFN_vkDestroyCuFunctionNVX vkDestroyCuFunctionNVX;
+	PFN_vkDestroyCuModuleNVX vkDestroyCuModuleNVX;
+#endif /* defined(VK_NVX_binary_import) */
 #if defined(VK_NVX_image_view_handle)
 	PFN_vkGetImageViewAddressNVX vkGetImageViewAddressNVX;
 	PFN_vkGetImageViewHandleNVX vkGetImageViewHandleNVX;
@@ -855,6 +877,10 @@ extern PFN_vkGetShaderInfoAMD vkGetShaderInfoAMD;
 extern PFN_vkGetAndroidHardwareBufferPropertiesANDROID vkGetAndroidHardwareBufferPropertiesANDROID;
 extern PFN_vkGetMemoryAndroidHardwareBufferANDROID vkGetMemoryAndroidHardwareBufferANDROID;
 #endif /* defined(VK_ANDROID_external_memory_android_hardware_buffer) */
+#if defined(VK_EXT_acquire_drm_display)
+extern PFN_vkAcquireDrmDisplayEXT vkAcquireDrmDisplayEXT;
+extern PFN_vkGetDrmDisplayEXT vkGetDrmDisplayEXT;
+#endif /* defined(VK_EXT_acquire_drm_display) */
 #if defined(VK_EXT_acquire_xlib_display)
 extern PFN_vkAcquireXlibDisplayEXT vkAcquireXlibDisplayEXT;
 extern PFN_vkGetRandROutputDisplayEXT vkGetRandROutputDisplayEXT;
@@ -931,6 +957,13 @@ extern PFN_vkCmdSetStencilOpEXT vkCmdSetStencilOpEXT;
 extern PFN_vkCmdSetStencilTestEnableEXT vkCmdSetStencilTestEnableEXT;
 extern PFN_vkCmdSetViewportWithCountEXT vkCmdSetViewportWithCountEXT;
 #endif /* defined(VK_EXT_extended_dynamic_state) */
+#if defined(VK_EXT_extended_dynamic_state2)
+extern PFN_vkCmdSetDepthBiasEnableEXT vkCmdSetDepthBiasEnableEXT;
+extern PFN_vkCmdSetLogicOpEXT vkCmdSetLogicOpEXT;
+extern PFN_vkCmdSetPatchControlPointsEXT vkCmdSetPatchControlPointsEXT;
+extern PFN_vkCmdSetPrimitiveRestartEnableEXT vkCmdSetPrimitiveRestartEnableEXT;
+extern PFN_vkCmdSetRasterizerDiscardEnableEXT vkCmdSetRasterizerDiscardEnableEXT;
+#endif /* defined(VK_EXT_extended_dynamic_state2) */
 #if defined(VK_EXT_external_memory_host)
 extern PFN_vkGetMemoryHostPointerPropertiesEXT vkGetMemoryHostPointerPropertiesEXT;
 #endif /* defined(VK_EXT_external_memory_host) */
@@ -957,6 +990,10 @@ extern PFN_vkCmdSetLineStippleEXT vkCmdSetLineStippleEXT;
 #if defined(VK_EXT_metal_surface)
 extern PFN_vkCreateMetalSurfaceEXT vkCreateMetalSurfaceEXT;
 #endif /* defined(VK_EXT_metal_surface) */
+#if defined(VK_EXT_multi_draw)
+extern PFN_vkCmdDrawMultiEXT vkCmdDrawMultiEXT;
+extern PFN_vkCmdDrawMultiIndexedEXT vkCmdDrawMultiIndexedEXT;
+#endif /* defined(VK_EXT_multi_draw) */
 #if defined(VK_EXT_private_data)
 extern PFN_vkCreatePrivateDataSlotEXT vkCreatePrivateDataSlotEXT;
 extern PFN_vkDestroyPrivateDataSlotEXT vkDestroyPrivateDataSlotEXT;
@@ -1005,6 +1042,10 @@ extern PFN_vkCreateStreamDescriptorSurfaceGGP vkCreateStreamDescriptorSurfaceGGP
 extern PFN_vkGetPastPresentationTimingGOOGLE vkGetPastPresentationTimingGOOGLE;
 extern PFN_vkGetRefreshCycleDurationGOOGLE vkGetRefreshCycleDurationGOOGLE;
 #endif /* defined(VK_GOOGLE_display_timing) */
+#if defined(VK_HUAWEI_subpass_shading)
+extern PFN_vkCmdSubpassShadingHUAWEI vkCmdSubpassShadingHUAWEI;
+extern PFN_vkGetSubpassShadingMaxWorkgroupSizeHUAWEI vkGetSubpassShadingMaxWorkgroupSizeHUAWEI;
+#endif /* defined(VK_HUAWEI_subpass_shading) */
 #if defined(VK_INTEL_performance_query)
 extern PFN_vkAcquirePerformanceConfigurationINTEL vkAcquirePerformanceConfigurationINTEL;
 extern PFN_vkCmdSetPerformanceMarkerINTEL vkCmdSetPerformanceMarkerINTEL;
@@ -1271,6 +1312,13 @@ extern PFN_vkCreateMacOSSurfaceMVK vkCreateMacOSSurfaceMVK;
 #if defined(VK_NN_vi_surface)
 extern PFN_vkCreateViSurfaceNN vkCreateViSurfaceNN;
 #endif /* defined(VK_NN_vi_surface) */
+#if defined(VK_NVX_binary_import)
+extern PFN_vkCmdCuLaunchKernelNVX vkCmdCuLaunchKernelNVX;
+extern PFN_vkCreateCuFunctionNVX vkCreateCuFunctionNVX;
+extern PFN_vkCreateCuModuleNVX vkCreateCuModuleNVX;
+extern PFN_vkDestroyCuFunctionNVX vkDestroyCuFunctionNVX;
+extern PFN_vkDestroyCuModuleNVX vkDestroyCuModuleNVX;
+#endif /* defined(VK_NVX_binary_import) */
 #if defined(VK_NVX_image_view_handle)
 extern PFN_vkGetImageViewAddressNVX vkGetImageViewAddressNVX;
 extern PFN_vkGetImageViewHandleNVX vkGetImageViewHandleNVX;

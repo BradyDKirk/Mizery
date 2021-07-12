@@ -10,7 +10,7 @@ namespace Mizery {
 	void Game::init()
 	{	
 		basicShader = new Shader("data/shaders/basic_vert.spv", "data/shaders/basic_frag.spv");
-
+        
 		// Cube(shader, position, scale, color, isStatic)
 		cube1 = new Cube(basicShader, glm::vec3( 0.0f, -7.0f, 0.0f), glm::vec3(15.0f, 1.0f, 15.0f), glm::vec3(0.1f, 0.1f, 0.1f));
 		cube2 = new Cube(basicShader, glm::vec3(-4.0f,  0.0f, 0.0f), glm::vec3( 1.0f, 1.0f,  1.0f), glm::vec3(1.0f, 0.8f, 0.3f));
@@ -27,7 +27,7 @@ namespace Mizery {
 		if (input.keyPressed(KEY_E)) { camera->move(UP, dt); }
 		if (input.keyPressed(KEY_Q)) { camera->move(DOWN, dt); }
 		if (input.isMouseMoving()) { camera->updateLook(input.cursorXOffset(), input.cursorYOffset()); }
-		
+        
 		// @TEMP
 		// Reload shaders
 		static bool32 rPressed = false;
